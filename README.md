@@ -1,21 +1,46 @@
 # Fake-Amazon-Review-Detection
-This project aims to combats fake consumer reviews using a DFFNN to detect fraudulent content.
 
-1. Our proposed model uses a publicy available amazon review dataset from kaggle (https://www.kaggle.com/datasets/lievgarcia/amazon-reviews). The file can be found at "datasets/amazon_reviews.txt"
+This repository implements an automated approach for identifying fake reviews in Amazon product review data.
 
-2. In order to capture the relationship between spurious reviews and emotion representation, 30 emotion features were extracted from the "datasets/amazon_reviews.txt" using 9 emotion lexicons. The resultant features were added to the dataset and saved as "datasets/amazon_reviews_features.txt"
+## Overview
 
-3. The code used to extract the aforementioned emotion features can be found in "Emotion_Feature_Generation.ipynb". Recomputing these features requires Java 1.6+. It also requires downloading of all the lexicons mentioned in "Emotion_Feature_Generation.ipynb". Our advice would be to NOT execute "Emotion_Feature_Generation.ipynb" as it consumes significant disk space and time.
+The project evaluates whether emotional content, extracted via lexicon-based features, can improve detection of fraudulent reviews. A dense feedforward neural network (DFFNN) is used to classify reviews as legitimate or fake.
 
-4. The code for the rest of the project (including preprocessing, remaining feature extraction, model training, validation) can be found in "Fake_Review_Detection.ipynb" (this uses "datasets/amazon_reviews_features.txt"). It has the following dependencies:
-	a. nltk
-	b. pandas
-	c. re
-	d. sklearn
-	e. matplotlib
-	f. gensim
-	g. tensorflow
+## Dataset
 
+- Source: Amazon review dataset from Kaggle (https://www.kaggle.com/datasets/lievgarcia/amazon-reviews)
+- Primary file: `datasets/amazon_reviews.txt`
+- Feature-enhanced file: `datasets/amazon_reviews_features.txt`
 
+## Feature Generation
 
+- `Emotion_Feature_Generation.ipynb` contains the pipeline for extracting 30 emotion-based features from review text.
+- These features are derived using nine emotion lexicons.
+- Recomputing the feature set is not recommended unless necessary; it requires Java 1.6+ and substantial disk space and time.
+
+## Model Training and Evaluation
+
+- `Fake_Review_Detection.ipynb` performs preprocessing, additional feature extraction, model training, and evaluation.
+- It relies on `datasets/amazon_reviews_features.txt` as input.
+
+## Dependencies
+
+- pandas
+- nltk
+- scikit-learn
+- tensorflow
+- gensim
+- matplotlib
+- re (standard library)
+
+## Usage
+
+1. Install the required Python packages.
+2. Open `Fake_Review_Detection.ipynb` to inspect preprocessing, training, and validation.
+3. Do not rerun `Emotion_Feature_Generation.ipynb` unless you intend to regenerate lexicon-based features.
+
+## Notes
+
+- The repository is intended for research and experimentation with fake review detection.
+- The notebooks are the primary artifacts for reproducing the workflow.
 
